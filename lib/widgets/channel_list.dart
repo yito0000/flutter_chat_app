@@ -9,11 +9,9 @@ import 'package:flutter_chat_app/resource/repository/message_repository.dart';
 class ChannelList extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => ChannelListState();
-
 }
 
 class ChannelListState extends State<ChannelList> {
-
   final ChannelRepository _channelRepository = new ChannelRepository();
 
   @override
@@ -24,7 +22,10 @@ class ChannelListState extends State<ChannelList> {
         child: FutureBuilder<List<Channel>>(
           future: this._channelRepository.fetchAll(),
           builder: (context, snapshot) {
-            List<Channel> data = snapshot.data;
+            List<Channel> data = new List();
+            if (snapshot.data != null) {
+              data = snapshot.data;
+            }
             return _buildList(data);
           },
         ),
@@ -44,7 +45,6 @@ class ChannelListState extends State<ChannelList> {
   Widget _buildRow(Channel data) {
     return ListTile(
         title: Text(data.name),
-        leading: data.isPrivate ? Icon(Icons.lock) : Icon(Icons.public)
-    );
+        leading: data.isPrivate ? Icon(Icons.lock) : Icon(Icons.public));
   }
 }

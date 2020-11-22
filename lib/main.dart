@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/widgets/channel_list.dart';
+import 'package:flutter_chat_app/widgets/channel_time_line.dart';
 
 import 'widgets/random_words.dart';
 
@@ -41,7 +42,7 @@ class MainAppState extends State<MainApp> with SingleTickerProviderStateMixin {
         backgroundColor: Colors.cyan,
       ),
       body: TabBarView(
-        children: <Widget>[ChannelList(), RandomWords(), RandomWords()],
+        children: <Widget>[ChannelList(), ChannelTimeLine(), RandomWords()],
         controller: _tabController,
       ),
       bottomNavigationBar: Material(
